@@ -77,3 +77,16 @@ for nama, kode in zip(encoder_kota.classes_, encoder_kota.transform(encoder_kota
 print("\nDaftar kode kategori:")
 for nama, kode in zip(encoder_kategori.classes_, encoder_kategori.transform(encoder_kategori.classes_)):
     print(kode, "=", nama)
+
+# 5. MENENTUKAN FITUR DAN TARGET
+
+# Fitur utama untuk memprediksi setiap jenis kendaraan
+fitur = ["tahun", "kabupaten_kota_kode"]
+
+# Target yang akan diprediksi satu per satu
+target_jenis_kendaraan = [
+    "mobil_penumpang",
+    "bus",
+    "truk",
+    "sepeda_motor"
+]

@@ -57,3 +57,23 @@ print("Jumlah data yang digunakan untuk model:", len(data_model))
 
 print("\nData yang siap digunakan untuk model:")
 print(data_model.head())
+
+# 4. ENCODING DATA KATEGORI
+
+# Mengubah nama kabupaten/kota menjadi angka
+encoder_kota = LabelEncoder()
+data_model["kabupaten_kota_kode"] = encoder_kota.fit_transform(data_model["kabupaten_kota"])
+
+# Mengubah kategori kendaraan menjadi angka
+encoder_kategori = LabelEncoder()
+data_model["kategori_kode"] = encoder_kategori.fit_transform(
+    data_model["kategori_jumlah_kendaraan"]
+)
+
+print("\nDaftar kode kabupaten/kota:")
+for nama, kode in zip(encoder_kota.classes_, encoder_kota.transform(encoder_kota.classes_)):
+    print(kode, "=", nama)
+
+print("\nDaftar kode kategori:")
+for nama, kode in zip(encoder_kategori.classes_, encoder_kategori.transform(encoder_kategori.classes_)):
+    print(kode, "=", nama)

@@ -40,3 +40,20 @@ print(data.head())
 
 print("\nInformasi dataset:")
 print(data.info())
+
+# 3. MEMBERSIHKAN DATA KOSONG
+
+# Menyimpan data asli, termasuk data yang kosong
+data_asli = data.copy()
+
+# Data untuk model hanya memakai baris yang jumlah kendaraannya tersedia
+data_model = data.dropna(subset=["jumlah_kendaraan"])
+
+# Menghapus baris kategori Tidak Tersedia jika ada
+data_model = data_model[data_model["kategori_jumlah_kendaraan"] != "Tidak Tersedia"]
+
+print("\nJumlah data asli:", len(data_asli))
+print("Jumlah data yang digunakan untuk model:", len(data_model))
+
+print("\nData yang siap digunakan untuk model:")
+print(data_model.head())

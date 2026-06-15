@@ -140,3 +140,18 @@ for target in target_jenis_kendaraan:
         "RMSE": rmse,
         "R2": r2
     })
+
+    # 7. MEMBUAT DATA PREDIKSI TAHUN 2026
+
+daftar_kota = data_model["kabupaten_kota"].unique()
+
+data_2026 = pd.DataFrame({
+    "tahun": [2026] * len(daftar_kota),
+    "kabupaten_kota": daftar_kota
+})
+
+data_2026["kabupaten_kota_kode"] = encoder_kota.transform(
+    data_2026["kabupaten_kota"]
+)
+
+X_2026 = data_2026[fitur]

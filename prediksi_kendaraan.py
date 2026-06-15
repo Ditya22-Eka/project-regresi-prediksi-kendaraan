@@ -176,3 +176,45 @@ data_2026["prediksi_jumlah_kendaraan_2026"] = (
     data_2026["prediksi_truk"] +
     data_2026["prediksi_sepeda_motor"]
 )
+
+# 9. MODEL SUPPORT VECTOR CLASSIFICATION
+
+print("\n==============================")
+print("MODEL SUPPORT VECTOR CLASSIFICATION")
+print("==============================")
+
+# Untuk SVC, fitur yang digunakan adalah tahun, kode wilayah, dan jumlah kendaraan
+fitur_svc = ["tahun", "kabupaten_kota_kode", "jumlah_kendaraan"]
+
+X_svc = data_model[fitur_svc]
+y_svc = data_model["kategori_kode"]
+
+X_train_svc, X_test_svc, y_train_svc, y_test_svc = train_test_split(
+    X_svc,
+    y_svc,
+    test_size=0.2,
+    random_state=42
+)
+
+scaler = StandardScaler()
+
+X_train_svc_scaled = scaler.fit_transform(X_train_svc)
+X_test_svc_scaled = scaler.transform(X_test_svc)
+
+model_svc = SVC(kernel="rbf", C=1.0, gamma="scale")
+model_svc.fit(X_train_svc_scaled, y_train_svc)
+
+y_pred_svc = model_svc.predict(X_test_svc_scaled)
+
+akurasi = accuracy_score(y_test_svc, y_pred_svc)
+
+print("Akurasi SVC:", akurasi)
+
+print("\nClassification Report:")
+print(
+    classification_report(
+        y_test_svc,
+        y_pred_svc,
+        target_names=encoder_kategori.classes_
+    )
+)

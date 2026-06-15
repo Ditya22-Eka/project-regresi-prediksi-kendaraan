@@ -90,3 +90,53 @@ target_jenis_kendaraan = [
     "truk",
     "sepeda_motor"
 ]
+
+# 6. MODEL REGRESI LINEAR UNTUK SETIAP JENIS KENDARAAN
+
+print("\n==============================")
+print("MODEL REGRESI LINEAR")
+print("==============================")
+
+model_regresi_jenis = {}
+evaluasi_regresi = []
+
+for target in target_jenis_kendaraan:
+    print(f"\nPrediksi untuk: {target}")
+
+    # Mengambil data yang tidak kosong pada target tersebut
+    data_target = data_model.dropna(subset=[target])
+
+    X = data_target[fitur]
+    y = data_target[target]
+
+    X_train, X_test, y_train, y_test = train_test_split(
+        X,
+        y,
+        test_size=0.2,
+        random_state=42
+    )
+
+    model = LinearRegression()
+    model.fit(X_train, y_train)
+
+    y_pred = model.predict(X_test)
+
+    mae = mean_absolute_error(y_test, y_pred)
+    mse = mean_squared_error(y_test, y_pred)
+    rmse = np.sqrt(mse)
+    r2 = r2_score(y_test, y_pred)
+
+    print("MAE  :", mae)
+    print("MSE  :", mse)
+    print("RMSE :", rmse)
+    print("R2   :", r2)
+
+    model_regresi_jenis[target] = model
+
+    evaluasi_regresi.append({
+        "jenis_kendaraan": target,
+        "MAE": mae,
+        "MSE": mse,
+        "RMSE": rmse,
+        "R2": r2
+    })

@@ -168,3 +168,11 @@ for target in target_jenis_kendaraan:
     ).astype(int)
 
     data_2026[kolom_prediksi] = data_2026[kolom_prediksi].clip(lower=0)
+
+    # Menghitung total prediksi kendaraan dari semua jenis kendaraan
+data_2026["prediksi_jumlah_kendaraan_2026"] = (
+    data_2026["prediksi_mobil_penumpang"] +
+    data_2026["prediksi_bus"] +
+    data_2026["prediksi_truk"] +
+    data_2026["prediksi_sepeda_motor"]
+)

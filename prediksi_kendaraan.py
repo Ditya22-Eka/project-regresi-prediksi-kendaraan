@@ -155,3 +155,16 @@ data_2026["kabupaten_kota_kode"] = encoder_kota.transform(
 )
 
 X_2026 = data_2026[fitur]
+
+# 8. PREDIKSI SETIAP JENIS KENDARAAN TAHUN 2026
+
+for target in target_jenis_kendaraan:
+    kolom_prediksi = "prediksi_" + target
+
+    data_2026[kolom_prediksi] = model_regresi_jenis[target].predict(X_2026)
+
+    data_2026[kolom_prediksi] = np.round(
+        data_2026[kolom_prediksi]
+    ).astype(int)
+
+    data_2026[kolom_prediksi] = data_2026[kolom_prediksi].clip(lower=0)

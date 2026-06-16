@@ -254,3 +254,46 @@ print("\n==============================")
 print("HASIL PREDIKSI TAHUN 2026")
 print("==============================")
 print(hasil_prediksi)
+
+# 12. MEMBUAT GRAFIK HASIL PREDIKSI
+
+plt.figure(figsize=(14, 7))
+
+plt.bar(
+    hasil_prediksi["kabupaten_kota"],
+    hasil_prediksi["prediksi_mobil_penumpang"],
+    label="Mobil Penumpang"
+)
+
+plt.bar(
+    hasil_prediksi["kabupaten_kota"],
+    hasil_prediksi["prediksi_bus"],
+    bottom=hasil_prediksi["prediksi_mobil_penumpang"],
+    label="Bus"
+)
+
+plt.bar(
+    hasil_prediksi["kabupaten_kota"],
+    hasil_prediksi["prediksi_truk"],
+    bottom=hasil_prediksi["prediksi_mobil_penumpang"] + hasil_prediksi["prediksi_bus"],
+    label="Truk"
+)
+
+plt.bar(
+    hasil_prediksi["kabupaten_kota"],
+    hasil_prediksi["prediksi_sepeda_motor"],
+    bottom=hasil_prediksi["prediksi_mobil_penumpang"] + hasil_prediksi["prediksi_bus"] + hasil_prediksi["prediksi_truk"],
+    label="Sepeda Motor"
+)
+
+plt.title("Prediksi Jumlah Kendaraan Bermotor Tahun 2026 Berdasarkan Jenis Kendaraan")
+plt.xlabel("Kabupaten/Kota")
+plt.ylabel("Prediksi Jumlah Kendaraan")
+plt.xticks(rotation=90)
+plt.legend()
+plt.tight_layout()
+
+file_grafik = folder_project / "grafik_prediksi_kendaraan_2026_berdasarkan_jenis.png"
+plt.savefig(file_grafik)
+
+plt.show()

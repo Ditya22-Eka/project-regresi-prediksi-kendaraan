@@ -297,3 +297,23 @@ file_grafik = folder_project / "grafik_prediksi_kendaraan_2026_berdasarkan_jenis
 plt.savefig(file_grafik)
 
 plt.show()
+
+# 13. MENYIMPAN HASIL KE FILE EXCEL
+
+file_output = folder_project / "hasil_prediksi_kendaraan_2026.xlsx"
+
+data_evaluasi_regresi = pd.DataFrame(evaluasi_regresi)
+
+with pd.ExcelWriter(file_output, engine="openpyxl") as writer:
+    data_asli.to_excel(writer, sheet_name="Dataset_Asli", index=False)
+    data_model.to_excel(writer, sheet_name="Dataset_Model_Bersih", index=False)
+    data_evaluasi_regresi.to_excel(writer, sheet_name="Evaluasi_Regresi", index=False)
+    hasil_prediksi.to_excel(writer, sheet_name="Prediksi_2026", index=False)
+
+print("\nFile hasil prediksi berhasil disimpan:")
+print(file_output)
+
+print("\nGrafik hasil prediksi berhasil disimpan:")
+print(file_grafik)
+
+print("\nProgram selesai dijalankan.")

@@ -73,10 +73,3 @@ Sistem prediksi dalam repositori ini dibangun melalui beberapa tahapan sebagai b
 ## ⚠️ Catatan
 
 Model yang digunakan bersifat prediktif berdasarkan data historis jumlah kendaraan bermotor di Sulawesi Tengah. Hasil prediksi tidak dapat dijadikan keputusan resmi dalam kebijakan transportasi, melainkan digunakan sebagai simulasi dan analisis akademik untuk memahami penerapan metode Regresi Linear dan Support Vector Classification.
-
-
-11. **Visualisasi Data**
-    Hasil prediksi divisualisasikan dalam bentuk grafik batang berdasarkan kabupaten/kota dan jenis kendaraan.
-
-12. **Menyimpan Hasil Prediksi**
-    Hasil prediksi dan evaluasi model disimpan ke dalam file Excel.

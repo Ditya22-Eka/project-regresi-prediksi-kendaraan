@@ -249,3 +249,8 @@ hasil_prediksi = data_2026[
         "prediksi_kategori_2026"
     ]
 ]
+
+print("\n==============================")
+print("HASIL PREDIKSI TAHUN 2026")
+print("==============================")
+print(hasil_prediksi)

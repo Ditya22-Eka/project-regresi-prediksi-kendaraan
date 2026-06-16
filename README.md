@@ -70,8 +70,13 @@ Sistem prediksi dalam repositori ini dibangun melalui beberapa tahapan sebagai b
 9. **Evaluasi Model**
    Model Regresi Linear dievaluasi menggunakan MAE, MSE, RMSE, dan R2 Score. Model SVC dievaluasi menggunakan akurasi dan classification report.
 
-10. **Visualisasi Data**
+## ⚠️ Catatan
+
+Model yang digunakan bersifat prediktif berdasarkan data historis jumlah kendaraan bermotor di Sulawesi Tengah. Hasil prediksi tidak dapat dijadikan keputusan resmi dalam kebijakan transportasi, melainkan digunakan sebagai simulasi dan analisis akademik untuk memahami penerapan metode Regresi Linear dan Support Vector Classification.
+
+
+11. **Visualisasi Data**
     Hasil prediksi divisualisasikan dalam bentuk grafik batang berdasarkan kabupaten/kota dan jenis kendaraan.
 
-11. **Menyimpan Hasil Prediksi**
+12. **Menyimpan Hasil Prediksi**
     Hasil prediksi dan evaluasi model disimpan ke dalam file Excel.

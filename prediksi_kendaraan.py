@@ -218,3 +218,19 @@ print(
         target_names=encoder_kategori.classes_
     )
 )
+
+# 10. PREDIKSI KATEGORI TAHUN 2026 DENGAN SVC
+
+X_2026_svc = data_2026[
+    ["tahun", "kabupaten_kota_kode", "prediksi_jumlah_kendaraan_2026"]
+]
+
+X_2026_svc.columns = fitur_svc
+
+X_2026_svc_scaled = scaler.transform(X_2026_svc)
+
+prediksi_kategori_2026 = model_svc.predict(X_2026_svc_scaled)
+
+data_2026["prediksi_kategori_2026"] = encoder_kategori.inverse_transform(
+    prediksi_kategori_2026
+)

@@ -234,3 +234,18 @@ prediksi_kategori_2026 = model_svc.predict(X_2026_svc_scaled)
 data_2026["prediksi_kategori_2026"] = encoder_kategori.inverse_transform(
     prediksi_kategori_2026
 )
+
+# 11. MENAMPILKAN HASIL PREDIKSI
+
+hasil_prediksi = data_2026[
+    [
+        "tahun",
+        "kabupaten_kota",
+        "prediksi_mobil_penumpang",
+        "prediksi_bus",
+        "prediksi_truk",
+        "prediksi_sepeda_motor",
+        "prediksi_jumlah_kendaraan_2026",
+        "prediksi_kategori_2026"
+    ]
+]
